@@ -1,0 +1,48 @@
+.bns_tab_achiv {
+  margin-top: 25px;
+  .bns_achiv_item {
+    float: left;
+    width: 19%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    height: 215px;
+    border: 1px solid #dbdad9;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    &.act {
+      img {
+        -webkit-filter: grayscale(0%);
+        -moz-filter: grayscale(0%);
+        -ms-filter: grayscale(0%);
+        -o-filter: grayscale(0%);
+        filter: grayscale(0%);
+        filter: grayscale(0); /* Firefox 4+ */
+        filter: none; /* IE 6-9 */
+      }
+    }
+    img {
+      margin-top:5px;
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      -o-filter: grayscale(100%);
+      filter: grayscale(100%);
+      filter: grayscale(1); /* Firefox 4+ */
+      filter: gray; /* IE 6-9 */
+    }
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      bottom: 17px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+}

@@ -1,0 +1,383 @@
+.bns_info {
+  float: left;
+  width: 100%;
+  margin-top:50px;
+  .bns_info_left {
+    float: left;
+    width: 590px;
+    .bns_info_text {
+      float: left;
+      width: 50%;
+      position: relative;
+      &:before {
+        position: absolute;
+        right: 10px;
+        content: '';
+        display: block;
+        width: 1px;
+        background-color: #c9c9c9;
+        height: 100%;
+        top:0px;
+        -moz-transform: skewX(-18deg);
+        -webkit-transform: skewX(-18deg);
+        -o-transform: skewX(-18deg);
+        -ms-transform: skewX(-18deg);
+        transform: skewX(-18deg);
+      }
+      .bns_info_name {
+        float: left;
+        width: 100%;
+        font-size: 20px;
+        color: #000000;
+        font-weight: bold;
+      }
+      .bns_info_bon_bal {
+        float: left;
+        width: 100%;
+        &:before {
+          height: 100%;
+          content:'';
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .bns_info_bal_num {
+          font-size: 70px;
+          color: #00a6e1;
+          font-weight: bold;
+          font-style: italic;
+          vertical-align: middle;
+          display: inline-block;
+          margin-right: 30px;
+        }
+        .bns_info_bal_text {
+          font-size: 15px;
+          color: #00a6e1;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+      .bns_edit_profile {
+        float: left;
+        width: 100%;
+        color: #00a6e1;
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+    .bns_info_hist {
+      float: right;
+      width: 46%;
+      margin-top: 5px;
+      .bns_info_hist_item {
+        float: left;
+        width: 100%;
+        margin-bottom: 12px;
+        .bns_date {
+          float: left;
+          width: 83px;
+          font-size: 16px;
+          color: #bdbdbd;
+          font-weight: 300;
+        }
+        .bns_name {
+          float: left;
+          width: 120px;
+          margin-right:10px;
+          font-size: 16px;
+          color: #000;
+          font-weight: 300;
+        }
+        .bns_point {
+          float: left;
+          font-size: 16px;
+          color: #00a6e1;
+          font-weight: 300;
+
+        }
+      }
+      .bns_open_hist {
+        float: left;
+        font-size: 16px;
+        color: #00a6e1;
+        font-weight: 300;
+        margin-top: 10px;
+      }
+    }
+    .bns_info_slide {
+      float: left;
+      width: 100%;
+      position: relative;
+      max-width: 560px;
+      margin-top: 50px;
+      .bns_info_slide_item {
+        width: 100%;
+        height: 335px;
+        -webkit-background-size: cover;
+        background-size: cover;
+        border-radius: 8px;
+        border: 1px solid #c2c1c0;
+        top: 0;
+        left: 0;
+        position: absolute;
+        overflow: hidden;
+        z-index: 99;
+        transition: opacity .8s linear;
+        opacity: 0;
+        &.show {
+          opacity: 1;
+          position: relative;
+          .bns_info_slide_text {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .bns_info_slide_head {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .bns_info_slide_head {
+          float: left;
+          max-width: 320px;
+          padding: 11px 30px;
+
+          transform: translateX(-400px);
+          opacity: 0;
+          transition: opacity 2.2s ease-out, transform 2s ease-out;      
+
+          box-sizing: border-box;
+          position: relative;
+          font-size: 16px;
+          color: #ffffff;
+          font-weight: 300;
+          margin-top: 35px;
+          overflow: hidden;
+          &:before {
+            width: 100%;
+            height: 100%;
+            background-color: #00a6e1;
+            content: '';
+            display: block;
+            position: absolute;
+            left: -10px;
+            top: 0;
+            z-index: -1;
+            -moz-transform: skewX(-15deg);
+            -webkit-transform: skewX(-15deg);
+            -o-transform: skewX(-15deg);
+            -ms-transform: skewX(-15deg);
+            transform: skewX(-15deg);
+          }
+        }
+        .bns_info_slide_text {
+          float: left;
+          width: 100%;
+          box-sizing: border-box;
+          
+          transform: translateY(-150px);
+          opacity: 0;
+          transition: opacity 1.8s ease-out, transform 2s ease-out;          
+
+          font-size: 22px;
+          font-weight: bold;
+          color: #000000;
+          padding: 0px 30px;
+          margin-top: 28px;
+        }
+        .bns_info_slide_linck {
+          float: left;
+          margin-left: 30px;
+          line-height: 44px;
+          padding: 0px 28px;
+          color: #000000;
+          font-size: 14px;
+          font-weight: 300;
+          display: inline-block;
+          text-decoration: none;
+          position: relative;
+          margin-top: 30px;
+          &:before {
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 4px;
+            -moz-transform: skewX(-15deg);
+            -webkit-transform: skewX(-15deg);
+            -o-transform: skewX(-15deg);
+            -ms-transform: skewX(-15deg);
+            transform: skewX(-15deg);
+            content: '';
+            display: block;
+            box-sizing: border-box;
+            border: 1px solid #c2c1c0;
+            position: absolute;
+            z-index: -1;
+          }
+          &:hover {
+            color: #fff;
+            &:before  {
+              background-color: #00a6e1;
+              border: 1px solid #00a6e1;
+            }
+          }
+        }
+      }
+      .bns_slide_pager {
+        position: absolute;
+        left: 30px;
+        bottom: 16px;
+        z-index: 10000;
+        span {
+          content: '';
+          width: 11px;
+          height: 11px;
+          display: inline-block;
+          margin-right:6px;
+          background-color: #d1d0cf;
+          border-radius: 11px;
+          text-indent: -99999px;
+          &.active {
+            background-color: #00a6e1;
+          }
+        }
+      }
+    }
+  }
+  .bns_info_right {
+    float: right;
+    width: 360px;
+    .bns_info_mount {
+      width: 360px;
+      height: 540px;
+      background-image: url("@{burl}mount_mask.png");
+      background-color: #e5e5e5;
+      background-position: left top;
+      margin-top: -16px;
+      box-sizing: border-box;
+      padding-top:22px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      &:before {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top:0px;
+        display: block;
+        background-image: url("@{burl}mount_mask.png");
+        background-position: left top;
+        content: '';
+      }
+      .bns_info_mount_item {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left:127px;
+        height: 100px;
+        border-top: 1px solid transparent;
+        position: relative;
+        &:before {
+          content: '';
+          height: 100%;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        &:nth-child(1) {
+          img {
+            margin-left: 10px;
+          }
+        }
+        &.act {
+          &:after {
+            width: 100%;
+            height: 164px;
+            position: absolute;
+            left: 0;
+            top:50%;
+            margin-top: -87px;
+            display: block;
+            z-index: -1;
+            background-image: url("@{burl}mount_act_bg.png");
+            content: '';
+            -webkit-background-size: cover;
+            background-size: cover;
+          }
+          .bns_info_mount_item_name, .bns_info_mount_item_text {
+            color: #00a6e1 !important;
+          }
+          img {
+            vertical-align: middle;
+            -webkit-filter: grayscale(0%);
+            -moz-filter: grayscale(0%);
+            -ms-filter: grayscale(0%);
+            -o-filter: grayscale(0%);
+            filter: grayscale(0%);
+            filter: grayscale(0); /* Firefox 4+ */
+            filter: none; /* IE 6-9 */
+          }
+        }
+        img {
+          vertical-align: middle;
+          -webkit-filter: grayscale(100%);
+          -moz-filter: grayscale(100%);
+          -ms-filter: grayscale(100%);
+          -o-filter: grayscale(100%);
+          filter: grayscale(100%);
+          filter: grayscale(1); /* Firefox 4+ */
+          filter: gray; /* IE 6-9 */
+        }
+        &:hover {
+          .bns_info_mount_item_name, .bns_info_mount_item_text {
+            opacity: 0;
+          }
+          .bns_info_mount_item_info {
+            a {
+              opacity: 1;
+            }
+          }
+        }
+        .bns_info_mount_item_info {
+          width: 135px;
+          float: right;
+          margin-right: 10px;
+          margin-top: 27px;
+          position: relative;
+          .bns_info_mount_item_name {
+            float: left;
+            width: 100%;
+            color: #fff;
+            text-shadow: 0 0 10px #000000;
+            font-size: 17px;
+            color: #fff;
+          }
+          .bns_info_mount_item_text {
+            float: left;
+            width: 100%;
+            color: #fff;
+            text-shadow: 0 0 10px #000000;
+            font-size: 15px;
+            color: #fff;
+          }
+          a {
+            opacity: 0;
+            line-height: 44px;
+            border-radius: 4px;
+            background-color: #00a6e1;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 300;
+            width: 132px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            position: absolute;
+            right: 0;
+            top:50%;
+            margin-top: -22px;
+          }
+        }
+      }
+    }
+  }
+}

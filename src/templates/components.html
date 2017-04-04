@@ -1,0 +1,15 @@
+<script type="text/template" id="koSlider">
+    <div class="bns_slide_pager" data-bind="foreach: ko.utils.range(1, slides.length), cssVisible: ">
+        <span data-bind="css: { active: $parent.currentSlide() == $data - 1 },
+                                click: function(data, event) { $parent.currentSlide($data - 1) }
+                        ">*</span>
+    </div>
+    <!-- ko foreach: slides, beforeAdd: add -->
+    <div class="bns_info_slide_item" data-bind="style: { backgroundImage: `url(${image})` }, 
+                                                cssVisible: $parent.currentSlide() == $index()">
+        <span class="bns_info_slide_head" data-bind="html: header_html"></span>
+        <span class="bns_info_slide_text" data-bind="html: description_html"></span>
+        <a href="#" class="bns_info_slide_linck" data-bind="text: link_text"></a>
+    </div>
+    <!-- /ko -->
+</script>
