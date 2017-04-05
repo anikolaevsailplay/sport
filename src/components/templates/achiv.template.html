@@ -1,22 +1,8 @@
 <script type="text/template" id="koAchiv">
-    <a href="#" class="bns_achiv_item act">
-        <img src="src/img/ach1.png" alt="">
-        <span>Зритель</span>
+    <!-- ko foreach: achiv -->
+    <a href="#" class="bns_achiv_item" data-bind="css: { act:  is_received }">
+        <img data-bind="attr: { src: thumbs.url_250x250 }" alt="">
+        <span data-bind="text: name"></span>
     </a>
-    <a href="#" class="bns_achiv_item act">
-        <img src="src/img/ach2.png" alt="">
-        <span>Болельщик</span>
-    </a>
-    <a href="#" class="bns_achiv_item act">
-        <img src="src/img/ach3.png" alt="">
-        <span>Фоторепортёр</span>
-    </a>
-    <a href="#" class="bns_achiv_item">
-        <img src="src/img/ach4.png" alt="">
-        <span>Обозреватель</span>
-    </a>
-    <a href="#" class="bns_achiv_item">
-        <img src="src/img/ach5.png" alt="">
-        <span>Эксперт</span>
-    </a>
+    <!-- /ko -->
 </script>

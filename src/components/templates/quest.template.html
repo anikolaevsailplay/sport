@@ -1,6 +1,8 @@
 <script type="text/template" id="koQuest">
-    <div class="bns_qust_item">
+    <!-- ko foreach: actions -->
+    <div class="bns_qust_item" data-bind="click: $parent.perform.bind($data, $data)">
         <div class="bns_qust_item_left">
+            <!-- ko if: $parent.isAction($data, 'partner_page') -->
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 45.8 26.1" style="enable-background:new 0 0 45.8 26.1; width: 46px;" xml:space="preserve">
                 <defs>
@@ -22,25 +24,9 @@
                                 c-0.8,0.4-1.4,1.2-1,1.3c0.5,0.1,1.5,0.3,2,1C18,3.9,18,6,18,6s0.4,5.9-0.9,6.7c-0.9,0.5-2.2-0.5-4.9-5.2C10.7,5,9.7,2.3,9.7,2.3
                                 S9.5,1.8,9.1,1.6C8.6,1.3,8,1.2,8,1.2l-6.5,0c0,0-1,0-1.3,0.5c-0.3,0.4,0,1.2,0,1.2s5.1,12,10.9,18C16.4,26.4,22.4,26,22.4,26
                                 L22.4,26z" />
-                </svg>
-        </div>
-        <div class="bns_qust_item_right">
-            <span class="bns_qust_item_right_name">
-                            Рассказать о нас в ВК
-                        </span>
-            <span class="bns_qust_item_right_bal">
-                            <span class="bns_qust_item_right_bal_num">
-                                15
-                            </span>
-            <span class="bns_qust_item_right_bal_text">
-                                баллов
-                            </span>
-            </span>
-            <a href="#" class="bns_qust_item_right_btn">Выполнить</a>
-        </div>
-    </div>
-    <div class="bns_qust_item">
-        <div class="bns_qust_item_left">
+            </svg>
+            <!-- /ko -->
+            <!-- ko if: $parent.isAction($data, 'fillProfile') -->            
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 45.4 45.4" style="enable-background:new 0 0 45.4 45.4; width: 45px;" xml:space="preserve">
 
@@ -55,25 +41,8 @@
                                 M33.5,16L22.7,32c-0.2,0.3-0.5-0.4-0.9,0.6h0c-0.4,0-0.7-0.3-0.9-0.6l-8.1-10.6c-0.3-0.4-0.3-1.1,0-1.5c0.4-0.4,1-0.5,1.4-0.3
                                 l7.5,6l10-11.2c0.4-0.4,1.1-0.4,1.5,0C33.8,14.8,33.8,15.5,33.5,16z" />
                 </svg>
-        </div>
-        <div class="bns_qust_item_right">
-            <span class="bns_qust_item_right_name">
-                            Заполнить
-                            профиль
-                        </span>
-            <span class="bns_qust_item_right_bal">
-                            <span class="bns_qust_item_right_bal_num">
-                                15
-                            </span>
-            <span class="bns_qust_item_right_bal_text">
-                                баллов
-                            </span>
-            </span>
-            <a href="#" class="bns_qust_item_right_btn">Выполнить</a>
-        </div>
-    </div>
-    <div class="bns_qust_item">
-        <div class="bns_qust_item_left">
+            <!-- /ko -->    
+            <!-- ko if: $parent.isAction($data, 'inviteFriend') -->                        
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 40 53.9" style="enable-background:new 0 0 40 53.9;" xml:space="preserve">
                 <path d="M-434.1,565.6h2.7c0,0,0.8-0.1,1.2-0.5c0.4-0.4,0.4-1.2,0.4-1.2s-0.1-3.7,1.6-4.2
@@ -100,26 +69,9 @@
                         />
                     </g>
                 </g>
-                </svg>
-        </div>
-        <div class="bns_qust_item_right">
-            <span class="bns_qust_item_right_name">
-                            Пригласить
-                            своего друга
-                        </span>
-            <span class="bns_qust_item_right_bal">
-                            <span class="bns_qust_item_right_bal_num">
-                                15
-                            </span>
-            <span class="bns_qust_item_right_bal_text">
-                                баллов
-                            </span>
-            </span>
-            <a href="#" class="bns_qust_item_right_btn">Выполнить</a>
-        </div>
-    </div>
-    <div class="bns_qust_item">
-        <div class="bns_qust_item_left">
+                </svg>    
+            <!-- /ko -->
+            <!-- ko if: $parent.isAction($data, 'purchase') || $parent.isAction($data, 'like') -->                                    
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 38.9 44.9" style="enable-background:new 0 0 38.9 44.9;" xml:space="preserve">
 
@@ -148,22 +100,23 @@
                     </g>
                 </g>
                 <path d="M32.5,0H6.4C2.9,0,0,2.9,0,6.4v25.8c0,3.5,2.9,6.4,6.4,6.4h26.1c0.1,0,0.1,0,0.2,0l6.3,6.3V32.3
-	                            v-7.1V6.4C38.9,2.9,36,0,32.5,0z" />
-                </svg>
+                                v-7.1V6.4C38.9,2.9,36,0,32.5,0z" />
+                </svg>      
+            <!-- /ko -->                      
         </div>
         <div class="bns_qust_item_right">
-            <span class="bns_qust_item_right_name">
-                            Рассказать о своей покупке
-                        </span>
+            <span class="bns_qust_item_right_name" data-bind="visible: $parent.isAction($data, 'partner_page')">Рассказать о нас в ВК</span>
+            <span class="bns_qust_item_right_name" data-bind="visible: $parent.isAction($data, 'fillProfile')">Заполнить профиль</span>
+            <span class="bns_qust_item_right_name" data-bind="visible: $parent.isAction($data, 'inviteFriend')">Пригласить своего друга</span>
+            <span class="bns_qust_item_right_name" data-bind="visible: $parent.isAction($data, 'purchase')">Рассказать о своей покупке</span>
+            <span class="bns_qust_item_right_name" data-bind="visible: $parent.isAction($data, 'like')">Вступить в группу</span>
+            
             <span class="bns_qust_item_right_bal">
-                            <span class="bns_qust_item_right_bal_num">
-                                15
-                            </span>
-            <span class="bns_qust_item_right_bal_text">
-                                баллов
-                            </span>
+                <span class="bns_qust_item_right_bal_num" data-bind="text: points"></span>
+                <span class="bns_qust_item_right_bal_text">баллов</span>
             </span>
             <a href="#" class="bns_qust_item_right_btn">Выполнить</a>
         </div>
     </div>
+    <!-- /ko -->
 </script>

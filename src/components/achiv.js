@@ -8,12 +8,16 @@ export default function(messager) {
         this.update = config => {
             if (!config) config = this.config;
             sailplay.send('load.badges.list', {
-                lang: 'ru',
-                include_rules: 1
+                lang: 'ru'
             })
         }
 
         sailplay.on('load.badges.list.success', result => {
+            result.multilevel_badges.forEach(arr => {
+                if (arr[0].name != 'Участник') {
+                    this.achiv(arr)             
+                }   
+            })
         });
 
         messager.subscribe('init', config => {

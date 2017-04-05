@@ -10,6 +10,7 @@ import tabsTemplate from './components/templates/tabs.template.html';
 import questTemplate from './components/templates/quest.template.html';
 import giftsTemplate from './components/templates/gifts.template.html';
 import achivTemplate from './components/templates/achiv.template.html';
+import statusTemplate from './components/templates/status.template.html';
 
 import koProfile from './components/profile.js';
 import koHistory from './components/history.js';
@@ -17,6 +18,7 @@ import koTabs from './components/tabs.js';
 import koQuest from './components/quest.js';
 import koGifts from './components/gifts.js';
 import koAchiv from './components/achiv.js';
+import koStatus from './components/status.js';
 
 import ko from 'knockout';
 import 'knockout-mapping';
@@ -63,6 +65,7 @@ register('ko-profile', { viewModel: koProfile(messager), template: profileTempla
 register('ko-history', { viewModel: koHistory(messager), template: historyTemplate.koHistory() })
 register('ko-gifts', { viewModel: koGifts(messager), template: giftsTemplate.koGifts() })
 register('ko-achiv', { viewModel: koAchiv(messager), template: achivTemplate.koAchiv() })
+register('ko-status', { viewModel: koStatus(messager), template: statusTemplate.koStatus() })
 
 ko.bindingHandlers.cssVisible = {
     update: function (element, valueAccessor) {
