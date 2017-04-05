@@ -2,7 +2,7 @@
     <!-- ko foreach: actions -->
     <div class="bns_qust_item" data-bind="click: $parent.perform.bind($data, $data)">
         <div class="bns_qust_item_left">
-            <!-- ko if: $parent.isAction($data, 'partner_page') -->
+            <!-- ko if: $parent.isAction($data, 'partner_page') || $parent.isAction($data, 'like') || $parent.isAction($data, 'purchase')-->
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 45.8 26.1" style="enable-background:new 0 0 45.8 26.1; width: 46px;" xml:space="preserve">
                 <defs>
@@ -71,7 +71,7 @@
                 </g>
                 </svg>    
             <!-- /ko -->
-            <!-- ko if: $parent.isAction($data, 'purchase') || $parent.isAction($data, 'like') -->                                    
+            <!-- ko if: $parent.isAction($data, 'purchase_never') || $parent.isAction($data, 'like_never') -->                                    
             <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 38.9 44.9" style="enable-background:new 0 0 38.9 44.9;" xml:space="preserve">
 
