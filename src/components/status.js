@@ -4,15 +4,19 @@ import sailplay from 'sailplay-hub';
 export default function(messager) {
     return function (params) {
         this.statuses = ko.observableArray([]);
-        this.alreadyActive = ko.observable(false);
-        this.isActive = (status) => {
-            if (this.alreadyActive()) return false
-            return status.is_received
+        this.firstActive = ko.observable(-1);
+        this.isActive = (status, index) => {
+            if (this.firstActive() == -1)
+                if (status.is_received) {
+                    this.firstActive(index())
+                }
+
+            return this.firstActive() == index()    
         }
 
         this.update = config => {
             if (!config) config = this.config;
-            this.alreadyActive(false);
+            this.alreadyActive = false;
             sailplay.send('load.badges.list', {
                 lang: 'ru'
             })

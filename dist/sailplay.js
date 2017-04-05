@@ -11894,15 +11894,18 @@ exports.default = function (messager) {
         var _this = this;
 
         this.statuses = _knockout2.default.observableArray([]);
-        this.alreadyActive = _knockout2.default.observable(false);
-        this.isActive = function (status) {
-            if (_this.alreadyActive()) return false;
-            return status.is_received;
+        this.firstActive = _knockout2.default.observable(-1);
+        this.isActive = function (status, index) {
+            if (_this.firstActive() == -1) if (status.is_received) {
+                _this.firstActive(index());
+            }
+
+            return _this.firstActive() == index();
         };
 
         this.update = function (config) {
             if (!config) config = _this.config;
-            _this.alreadyActive(false);
+            _this.alreadyActive = false;
             _sailplayHub2.default.send('load.badges.list', {
                 lang: 'ru'
             });
@@ -12007,7 +12010,7 @@ var _ = require('underscore');
 module.exports = {
     "koStatus": function(obj){
 var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
-__p+='\n    <div class="bns_info_mount" data-bind="foreach: statuses">\n        <div class="bns_info_mount_item" data-bind="css: { act: $parent.isActive($data) }">\n            <img data-bind="attr: { src: thumbs.url_250x250 }" width="70" height="73" alt="">\n            <div class="bns_info_mount_item_info">\n                <span class="bns_info_mount_item_name" data-bind="text: name"></span>\n                <span class="bns_info_mount_item_text" data-bind="text: descr"></span>\n                <a href="#" class="bns_info_mount_item_linck">Подробнее</a>\n            </div>\n        </div>\n    </div>\n';
+__p+='\n    <div class="bns_info_mount" data-bind="foreach: statuses">\n        <div class="bns_info_mount_item" data-bind="css: { act: $parent.isActive($data, $index) }">\n            <img data-bind="attr: { src: thumbs.url_250x250 }" width="70" height="73" alt="">\n            <div class="bns_info_mount_item_info">\n                <span class="bns_info_mount_item_name" data-bind="text: name"></span>\n                <span class="bns_info_mount_item_text" data-bind="text: descr"></span>\n                <a href="#" class="bns_info_mount_item_linck">Подробнее</a>\n            </div>\n        </div>\n    </div>\n';
 return __p;
 }
 };
