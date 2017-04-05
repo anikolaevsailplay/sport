@@ -1,0 +1,15 @@
+<script type="text/template" id="koGifts">
+    <!-- ko foreach: gifts -->
+    <div class="bns_gift_item">
+        <div class="bns_gift_item_img">
+            <img data-bind="attr: { src: thumbs.url_250x250 }" alt="">
+        </div>
+        <span class="bns_gift_item_name" data-bind="text: name"></span>
+        <span class="bns_gift_item_bal">
+            <span class="bns_gift_item_bal_num" data-bind="text: points"></span>
+            <span class="bns_gift_item_bal_text" data-bind="text: $parent.getNoun(points, 'балл', 'балла', 'баллов')"></span>
+        </span>
+        <a href="#" data-bind="click: $parent.gift_purchase.bind($data, $data)"class="bns_gift_item_linck">Получить</a>
+    </div>
+    <!-- /ko -->
+</script>

@@ -1,0 +1,37 @@
+<script type="text/template" id="koHistory">
+    <div class="bns_info_hist_container" data-bind="foreach: history().slice(0, 3)">
+        <div class="bns_info_hist_item">
+            <span class="bns_date" data-bind="text: $parent.formatDate(action_date)"></span>
+            <span class="bns_name" data-bind="text: name || 'Неизвестно'"></span>
+            <span class="bns_point"><span data-bind="text: $parent.checkPoints(points_delta)"></span></span>
+        </div>
+    </div>
+    <a href="#" data-bind="click: popupVm.openHistory, visible: history().length > 0" class="bns_open_hist">Вся история</a>
+    <div data-bind="component: {
+        name: 'ko-popup', 
+        params: { data: popupVm }
+        }">
+        <h3>Вся история</h3>
+        <table class="bns_hist_table">
+            <tbody data-bind="foreach: history().slice(current_page() * 6, (current_page() * 6) + 6)">
+                <tr>
+                    <td>
+                        <span data-bind="text: $parent.formatDate(action_date)"></span>
+                    </td>
+                    <td>
+                        <span><b data-bind="visible: action == 'gift_purchase'">Получен подарок </b></span>
+                        <span><b data-bind="visible: action != 'gift_purchase', text: name || 'Неизвестно'"></b></span>
+                        <span data-bind="visible: action == 'gift_purchase'" class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>
+                    </td>
+                    <td>
+                        <span data-bind="text: $parent.checkPoints(points_delta)"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="bns_hist_pager" data-bind="foreach: ko.utils.range(1, pages)">
+            <a href="#" data-bind="click: $parent.setPage.bind($data, $index), text: $index() + 1, css: { act: $parent.current_page() == $index() }"></a>
+        </div>
+        <a href="#" class="bns_hist_next" data-bind="click: nextPage, visible: current_page() < (pages() - 1)">Следующая страница</a>
+        </div>
+</script>

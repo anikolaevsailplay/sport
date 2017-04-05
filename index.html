@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <script src="dist/sailplay.ru"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var element = document.getElementById('sailplayLoyaltyPage');
+            if (element) {
+                window.SailPlay(element, {
+                    auth_hash: "80498cd6aa21371c29c131ecdc968f37063c899e",
+                    options: {
+                        partner_id: 1649,
+                        lang: "ru",
+                    },
+                    slider_items: [{
+                        header_html: "Персональное предложение",
+                        description_html: "Бесплатная доставка<br>в пределах МКАД<br>от 2500 рублей",
+                        link_text: "Подробнее",
+                        link_href: "yandex.ru",
+                        image: "src/img/slide1.png"
+                    },
+                    {
+                        header_html: "Персональное предложение 2",
+                        description_html: "Бесплатная доставка<br>в пределах МКАД<br>от 25000 рублей",
+                        description_color: "white",
+                        link_text: "Подробнее",
+                        link_href: "yandex.ru",                        
+                        image: "http://media.istockphoto.com/photos/woman-hand-accepting-a-delivery-of-boxes-from-deliveryman-picture-id511661096?k=6&m=511661096&s=170667a&w=0&h=o-_jihll28EMtEqj1hCl5hvJGBqnJDR6KaLJicXiMwg="
+                    }]
+                })
+            }
+        })
+    </script>    
+</head>
+
+<body>
+    <div id="sailplayLoyaltyPage"></div>
+</body>
+
+</html>

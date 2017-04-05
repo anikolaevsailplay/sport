@@ -8,8 +8,17 @@
     <div class="bns_info_slide_item" data-bind="style: { backgroundImage: `url(${image})` }, 
                                                 cssVisible: $parent.currentSlide() == $index()">
         <span class="bns_info_slide_head" data-bind="html: header_html"></span>
-        <span class="bns_info_slide_text" data-bind="html: description_html"></span>
-        <a href="#" class="bns_info_slide_linck" data-bind="text: link_text"></a>
+        <span class="bns_info_slide_text" data-bind="html: description_html, style: { color: $data.description_color || 'black' }"></span>
+        <a href="" class="bns_info_slide_linck" data-bind="text: link_text, attr: { href: link_href }"></a>
+        </div>
+        <!-- /ko -->
+</script>
+
+<script type="text/template" id="koPopup">
+    <div class="bns_overlay" data-bind="css: { show: data.opened }">
+        <div class="bns_overlay_iner" data-bind="style: { width: data.width }">
+            <a href="#" class="bns_close" data-bind="click: closePopup"></a>     
+            <span data-bind="template: { nodes: $componentTemplateNodes, data: data }"></span>       
+        </div>
     </div>
-    <!-- /ko -->
 </script>

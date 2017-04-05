@@ -36,7 +36,7 @@
         width: 100%;
         &:before {
           height: 100%;
-          content:'';
+          // content:'';
           display: inline-block;
           vertical-align: middle;
         }
@@ -68,6 +68,10 @@
       float: right;
       width: 46%;
       margin-top: 5px;
+      &_container {
+        height: 93px;
+        overflow: hidden;
+      }
       .bns_info_hist_item {
         float: left;
         width: 100%;
@@ -86,6 +90,9 @@
           font-size: 16px;
           color: #000;
           font-weight: 300;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .bns_point {
           float: left;
@@ -117,15 +124,17 @@
         border-radius: 8px;
         border: 1px solid #c2c1c0;
         top: 0;
-        left: 0;
+        left: -9999px;
         position: absolute;
         overflow: hidden;
         z-index: 99;
-        transition: opacity .8s linear;
+        transition: opacity .8s linear, left 0s linear .8s;
         opacity: 0;
         &.show {
           opacity: 1;
           position: relative;
+          transition: opacity .8s linear, left 0s linear;          
+          left: 0;
           .bns_info_slide_text {
             transform: translateY(0);
             opacity: 1;
@@ -142,7 +151,7 @@
 
           transform: translateX(-400px);
           opacity: 0;
-          transition: opacity 2.2s ease-out, transform 2s ease-out;      
+          transition: opacity 1s ease-out, transform .8s ease-out;      
 
           box-sizing: border-box;
           position: relative;
@@ -175,7 +184,7 @@
           
           transform: translateY(-150px);
           opacity: 0;
-          transition: opacity 1.8s ease-out, transform 2s ease-out;          
+          transition: opacity .8s ease-out, transform .8s ease-out;          
 
           font-size: 22px;
           font-weight: bold;
@@ -210,6 +219,7 @@
             display: block;
             box-sizing: border-box;
             border: 1px solid #c2c1c0;
+            background: white;
             position: absolute;
             z-index: -1;
           }

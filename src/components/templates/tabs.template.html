@@ -1,0 +1,9 @@
+<script type="text/template" id="koTabs">
+    <div class="bns_tab_top">
+        <div class="bns_tab_top_menu" data-bind="foreach: tabs">
+            <a href="javascript:void(0)" data-bind="click: $parent.setTab.bind($data, $index) ,text: name, css: { act: $parent.currentTabIndex() == $index() }"></a>
+        </div>
+        <span class="bns_tab_top_description" data-bind="text: tabs()[currentTabIndex()].description"></span>
+    </div>
+    <span data-bind="template: { nodes: $componentTemplateNodes, data: $data }"></span>       
+</script>
