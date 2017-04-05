@@ -11725,7 +11725,7 @@ exports.default = function (messager) {
                 document.body.className += ' no_scrol';
                 _this.popupVm.step(1);
                 _this.popupVm.width('356px');
-                if (_this.data().user['active_games'].length) _this.popupVm.active_games(_this.data().user['active_games']);
+                if (_this.data().user['active_games'] && _this.data().user['active_games'].length) _this.popupVm.active_games(_this.data().user['active_games']);
 
                 if (_this.is_register()) {
                     _this.popupVm.is_register(true);
