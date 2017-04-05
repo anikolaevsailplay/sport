@@ -27,7 +27,7 @@ export default function(messager) {
             'Тренировка: 6 и более раз в неделю'
         ]
 
-        this.registration = ['Регистрация завершена'];
+        this.registration = ['Пользователь заполнил профиль'];
         this.is_register = ko.observable(false);
         this.vars = ['city', 'address', 'child_birthdate', 'game_other'];
 
@@ -111,6 +111,20 @@ export default function(messager) {
 
         this.popupVm = {
             opened: ko.observable(false),
+            months: ko.observableArray([
+                {index: 1, name: 'Январь'},
+                {index: 2, name: 'Февраль'},
+                {index: 3, name: 'Март'},
+                {index: 4, name: 'Апрель'},
+                {index: 5, name: 'Май'},
+                {index: 6, name: 'Июнь'},
+                {index: 7, name: 'Июль'},
+                {index: 8, name: 'Август'},
+                {index: 9, name: 'Сентябрь'},
+                {index: 10, name: 'Октябрь'},
+                {index: 11, name: 'Ноябрь'},
+                {index: 12, name: 'Декабрь'}         
+            ]),
             step: ko.observable(1),
             games: this.games_tags,
             is_register: ko.observable(false),
@@ -141,8 +155,6 @@ export default function(messager) {
 
                 if (this.is_register()) {
                     this.popupVm.is_register(true);
-                    this.popupVm.step(2);
-                    this.popupVm.width('650px');                 
                 }
                 this.popupVm.opened(true)                    
             },

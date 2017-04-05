@@ -3,7 +3,7 @@
         <div class="bns_info_hist_item">
             <span class="bns_date" data-bind="text: $parent.formatDate(action_date)"></span>
             <span class="bns_name" data-bind="text: name || 'Неизвестно'"></span>
-            <span class="bns_point"><span data-bind="text: $parent.checkPoints(points_delta)"></span></span>
+            <span class="bns_point"><span data-bind="text: $data.points_delta && $parent.checkPoints(points_delta) || '-'"></span></span>
         </div>
     </div>
     <a href="#" data-bind="click: popupVm.openHistory, visible: history().length > 0" class="bns_open_hist">Вся история</a>
@@ -24,7 +24,7 @@
                         <span data-bind="visible: action == 'gift_purchase'" class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>
                     </td>
                     <td>
-                        <span data-bind="text: $parent.checkPoints(points_delta)"></span>
+                        <span data-bind="text: $data.points_delta && $parent.checkPoints(points_delta) || '-'"></span>
                     </td>
                 </tr>
             </tbody>

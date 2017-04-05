@@ -1,0 +1,12 @@
+<script type="text/template" id="koStatus">
+    <div class="bns_info_mount" data-bind="foreach: statuses">
+        <div class="bns_info_mount_item" data-bind="css: { act: $parent.isActive($data) }">
+            <img data-bind="attr: { src: thumbs.url_250x250 }" width="70" height="73" alt="">
+            <div class="bns_info_mount_item_info">
+                <span class="bns_info_mount_item_name" data-bind="text: name"></span>
+                <span class="bns_info_mount_item_text" data-bind="text: descr"></span>
+                <a href="#" class="bns_info_mount_item_linck">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</script>

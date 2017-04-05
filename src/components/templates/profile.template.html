@@ -26,24 +26,33 @@
             <div class="bns_input_block">
                 <input type="text" placeholder="Фамилия" data-bind="
                     value: getField('last_name'), 
-                    css: { error: getField('last_name') && !getField('last_name').isValid() } ">
+                    css: { error: getField('last_name').isValid && !getField('last_name').isValid() } ">
             </div>
             <div class="bns_input_block">
                 <input type="text" placeholder="Имя" data-bind="value: getField('first_name'), 
-                    css: { error: getField('first_name') && !getField('first_name').isValid() } ">
+                    css: { error: getField('first_name').isValid && !getField('first_name').isValid() } ">
             </div>
             <div class="bns_input_block">
                 <input type="text" placeholder="Отчество" data-bind="value: getField('middle_name'), 
-                    css: { error: getField('middle_name') && !getField('middle_name').isValid() } ">
+                    css: { error: getField('middle_name').isValid && !getField('middle_name').isValid() } ">
             </div>
             <div class="bns_input_block bns_input_block_date">
                 <label>День рождения</label>
                 <input type="text" class="bns_input_block_d" placeholder="День" data-bind="value: getField('birth_day'), 
-                    css: { error: getField('birth_day') && !getField('birth_day').isValid() } ">
+                    css: { error: getField('birth_day').isValid && !getField('birth_day').isValid() } ">
+                <!--<div class="select-style bns_input_block_m">
+                    <select data-bind="
+                        options: months,
+                        optionsText: function(item) {
+                            return item.name
+                        },
+                        optionsCaption: 'Месяц'
+                    "></select>
+                </div>-->
                 <input type="text" class="bns_input_block_m" placeholder="Месяц" data-bind="value: getField('birth_month'), 
-                    css: { error: getField('birth_month') && !getField('birth_month').isValid() } ">
+                    css: { error: getField('birth_month').isValid && !getField('birth_month').isValid() } ">
                 <input type="text" class="bns_input_block_y" placeholder="Год" data-bind="value: getField('birth_year'), 
-                    css: { error: getField('birth_year') && !getField('birth_year').isValid() } ">
+                    css: { error: getField('birth_year').isValid && !getField('birth_year').isValid() } ">
             </div>
             <div class="bns_input_block">
                 <input type="text" placeholder="Город" data-bind="value: getField('city')">
@@ -84,11 +93,11 @@
             <div class="bns_input_block bns_input_block_date">
                 <label>День рождения ребенка</label>
                 <input type="text" class="bns_input_block_d" placeholder="День" data-bind="value: getField('child_bday'), 
-                    css: { error: getField('child_bday') && !getField('child_bday').isValid() } ">
+                    css: { error: getField('child_bday').isValid && !getField('child_bday').isValid() } ">
                 <input type="text" class="bns_input_block_m" placeholder="Месяц" data-bind="value: getField('child_bmonth'), 
-                    css: { error: getField('child_bmonth') && !getField('child_bmonth').isValid() } ">
+                    css: { error: getField('child_bmonth').isValid && !getField('child_bmonth').isValid() } ">
                 <input type="text" class="bns_input_block_y" placeholder="Год" data-bind="value: getField('child_byear'), 
-                    css: { error: getField('child_byear') && !getField('child_byear').isValid() } ">
+                    css: { error: getField('child_byear').isValid && !getField('child_byear').isValid() } ">
             </div>
             <div class="bns_input_block">
                 <label>Сколько времени в неделю вы уделяете тренировкам? </label>
