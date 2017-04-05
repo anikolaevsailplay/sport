@@ -43,7 +43,7 @@
   },
   "scripts": {
     "start": "budo src/index.js --live",
-    "build": "browserify -o dist/sailplay.js",
+    "build": "browserify src/index.js -o dist/sailplay.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
