@@ -136,7 +136,7 @@ export default function(messager) {
                 document.body.className += ' no_scrol';
                 this.popupVm.step(1);
                 this.popupVm.width('356px')
-                if (this.data().user['active_games'].length)
+                if (this.data().user['active_games'] && this.data().user['active_games'].length)
                     this.popupVm.active_games(this.data().user['active_games']);
 
                 if (this.is_register()) {
