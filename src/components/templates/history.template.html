@@ -2,7 +2,31 @@
     <div class="bns_info_hist_container" data-bind="foreach: history().slice(0, 3)">
         <div class="bns_info_hist_item">
             <span class="bns_date" data-bind="text: $parent.formatDate(action_date)"></span>
-            <span class="bns_name" data-bind="text: name || 'Неизвестно'"></span>
+                <!-- ko if: action == 'badge' -->
+                <!-- ko if: $data.points_delta -->
+                <span class="bns_name">Получена награда</span>      
+                <!-- /ko -->
+                <!-- ko if: !$data.points_delta -->
+                <span class="bns_name">Получен статус</span>      
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: action == 'gift_purchase' -->
+                <span class="bns_name">Получен подарок</span>
+                <!-- /ko -->
+                <!-- ko if: action == 'sharing' -->
+                <!-- ko if: social_action == 'partner_page' -->
+                <span class="bns_name">Рассказал о нас в ВК</span>                            
+                <!-- /ko -->
+                <!-- ko if: social_action == 'like' -->
+                <span class="bns_name">Вступил в нашу группу</span>                            
+                <!-- /ko -->           
+                <!-- ko if: social_action == 'purchase' -->
+                <span class="bns_name">Поделился покупкой в ВК</span>                            
+                <!-- /ko -->   
+                <!-- /ko -->
+                <!-- ko if: action == 'purchase' -->
+                <span class="bns_name" data-bind="text: name"></span>  
+                <!-- /ko -->
             <span class="bns_point"><span data-bind="text: $data.points_delta && $parent.checkPoints(points_delta) || '-'"></span></span>
         </div>
     </div>
@@ -19,9 +43,35 @@
                         <span data-bind="text: $parent.formatDate(action_date)"></span>
                     </td>
                     <td>
-                        <span><b data-bind="visible: action == 'gift_purchase'">Получен подарок </b></span>
-                        <span><b data-bind="visible: action != 'gift_purchase', text: name || 'Неизвестно'"></b></span>
-                        <span data-bind="visible: action == 'gift_purchase'" class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>
+                        <!-- ko if: action == 'badge' -->
+                            <!-- ko if: $data.points_delta -->
+                            <span><b>Получена награда</b></span>      
+                            <span class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>                                                                      
+                            <!-- /ko -->
+                            <!-- ko if: !$data.points_delta -->
+                            <span><b>Получен статус</b></span>      
+                            <span class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>                                
+                            <!-- /ko -->
+                        <!-- /ko -->
+                        <!-- ko if: action == 'gift_purchase' -->
+                        <span><b>Получен подарок </b></span>
+                        <span class="bns_hist_gift_name blue"><b data-bind="text: name"></b></span>                                                        
+                        <!-- /ko -->
+                        <!-- ko if: action == 'sharing' -->
+                            <!-- ko if: social_action == 'partner_page' -->
+                            <span><b>Рассказал о нас в ВК</b></span>                            
+                            <!-- /ko -->
+                            <!-- ko if: social_action == 'like' -->
+                            <span><b>Вступил в нашу группу</b></span>                            
+                            <!-- /ko -->           
+                            <!-- ko if: social_action == 'purchase' -->
+                            <span><b>Поделился покупкой в ВК</b></span>                            
+                            <!-- /ko -->   
+                        <!-- /ko -->
+                        <!-- ko if: action == 'purchase' -->
+                        <span><b data-bind="text: name"></b></span>  
+                        <span class="bns_hist_gift_name blue"><b data-bind="text: price"></b> рублей</span>                                                                                         
+                        <!-- /ko -->
                     </td>
                     <td>
                         <span data-bind="text: $data.points_delta && $parent.checkPoints(points_delta) || '-'"></span>

@@ -23,7 +23,7 @@
                 <p>Название: <span data-bind="text: gift() && gift().name"></span></p>
                 <p>Стоимость: <span class="bns_gift_popup_points" data-bind="text: gift() && gift().points"></span> баллов</p>                
             </div>
-            <a href="javascript:void(0)" data-bind="visible: gift() && points() >= gift().points, click: gift_purchase.bind($data, $data)" class="bns_gift_popup_btn">Получить</a>
+            <a href="javascript:void(0)" data-bind="visible: gift() && points() >= gift().points, click: gift_purchase.bind($data, gift())" class="bns_gift_popup_btn">Получить</a>
             <a data-bind="visible: gift() && points() < gift().points" class="bns_gift_popup_btn disabled">Не хватает баллов</a>            
         </div>
     </div>

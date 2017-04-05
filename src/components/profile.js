@@ -166,6 +166,11 @@ export default function(messager) {
                 this.popupVm.opened(true)                    
             },
 
+            back: () => {
+                this.popupVm.step(this.popupVm.step() - 1);
+                this.popupVm.width('356px')
+            },
+
             next: () => {
                 if (this.popupVm.step() == 1) {
                     if (!this.data().user.first_name.isValid()) return;

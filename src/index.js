@@ -37,7 +37,6 @@ var messager = (function(){
     }
 }())
 
-var inited = ko.observable(true)
 var register = ko.components.register;
 
 register('ko-slider', {
@@ -101,8 +100,6 @@ class SailplaySportDepot {
             this.config = config;
             this.config.auth_hash = this.auth_hash;
             messager.publish(config, 'init')
-
-            inited(config);
         })
     }
 }

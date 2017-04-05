@@ -13,6 +13,7 @@
         params: { data: popupVm }
         }">
         <h3 data-bind="visible: !is_register()">Регистрация</h3>
+        <h3 data-bind="visible: is_register()">Редактирование профиля<br><br></h3>        
         <span class="bns_reg_gift" data-bind="visible: !is_register()">
             Получите 500 баллов,<br>пройдя быструю регистрацию
         </span>
@@ -69,7 +70,7 @@
         <div class="bns_reg_step_block bns_reg_step2" data-bind="css: { act: step() == 2 }">
             <div class="bns_input_block">
                 <label>Какими видами спорта вы занимаетесь? </label>
-                <br><br>
+                <br><br><br>
                 <!-- ko foreach: games -->
                 <div class="bns_checkbox">
                     <input type="checkbox" data-bind="value: $data, checked: $parent.active_games, attr: { id: `id${$index()}` }">
@@ -79,7 +80,9 @@
                 <input type="text" placeholder="Свой вариант" data-bind="value: getField('game_other')">
             </div>
             <div class="bns_input_block">
+                <br><br>
                 <label>Вы покупаете</label>
+                <br><br><br>
                 <div class="bns_checkbox">
                     <input type="radio" name="rad2" id="rad5" value="Покупаю: Себе" data-bind="checked: getField('for_who')">
                     <label for="rad5">Себе</label>
@@ -94,7 +97,9 @@
                 </div>
             </div>
             <div class="bns_input_block bns_input_block_date">
+                <br><br>                
                 <label>День рождения ребенка</label>
+                <br><br><br>
                 <input type="text" class="bns_input_block_d" placeholder="День" data-bind="value: getField('child_bday'), 
                     css: { error: getField('child_bday').isValid && !getField('child_bday').isValid() } ">
                 <div class="select-style bns_input_block_m" data-bind="
@@ -111,7 +116,9 @@
                     css: { error: getField('child_byear').isValid && !getField('child_byear').isValid() } ">
             </div>
             <div class="bns_input_block">
+                <br><br>                
                 <label>Сколько времени в неделю вы уделяете тренировкам? </label>
+                <br><br><br>
                 <div class="bns_checkbox bns_checkbox_big">
                     <input type="radio" name="rad1" id="rad1" value="Тренировка: 1 раз в неделю или реже" data-bind="checked: getField('training')">
                     <label for="rad1">1 раз в неделю или реже</label>
@@ -130,7 +137,8 @@
                 </div>
             </div>
             <div class="bns_input_block bns_input_block_cent">
-                <a href="#" class="bns_btn" data-bind="click: is_register() ? finish : next, text: is_register() ? 'Сохранить' : 'Далее'">Далее</a>
+                <a href="#" class="bns_btn left" data-bind="click: back">Назад</a>                
+                <a href="#" class="bns_btn right" data-bind="click: is_register() ? finish : next, text: is_register() ? 'Сохранить' : 'Далее'">Далее</a>
             </div>
         </div>
         <div class="bns_reg_step_block bns_reg_step3" data-bind="css: { act: step() == 3 }">
