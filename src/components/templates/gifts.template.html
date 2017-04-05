@@ -9,7 +9,22 @@
             <span class="bns_gift_item_bal_num" data-bind="text: points"></span>
             <span class="bns_gift_item_bal_text" data-bind="text: $parent.getNoun(points, 'балл', 'балла', 'баллов')"></span>
         </span>
-        <a href="#" data-bind="click: $parent.gift_purchase.bind($data, $data)"class="bns_gift_item_linck">Получить</a>
+        <a href="#" data-bind="click: $parent.popupVm.openGift.bind($data, $data)"class="bns_gift_item_linck">Получить</a>
     </div>
     <!-- /ko -->
+    <div data-bind="component: {
+        name: 'ko-popup', 
+        params: { data: popupVm }
+        }">
+        <h3 class="bns_gift_popup_header">Получение подарка</h3>
+        <div class="bns_gift_popup">
+            <img data-bind="attr: { src: gift() && gift().thumbs.url_250x250 }" alt="">
+            <div>
+                <p>Название: <span data-bind="text: gift() && gift().name"></span></p>
+                <p>Стоимость: <span class="bns_gift_popup_points" data-bind="text: gift() && gift().points"></span> баллов</p>                
+            </div>
+            <a href="javascript:void(0)" data-bind="visible: gift() && points() >= gift().points, click: gift_purchase.bind($data, $data)" class="bns_gift_popup_btn">Получить</a>
+            <a data-bind="visible: gift() && points() < gift().points" class="bns_gift_popup_btn disabled">Не хватает баллов</a>            
+        </div>
+    </div>
 </script>

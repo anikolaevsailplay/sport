@@ -45,11 +45,18 @@ export default function(messager) {
                 if (value.user.birth_date()) {
                     let birth_date = value.user.birth_date();
                     value.user.birth_day = ko.observable(birth_date.split('-')[2]).extend({required: true, min: 1, max: 31, pattern: { message: "wrong", params: '^[0-9]{1,2}$' }});
-                    value.user.birth_month = ko.observable(birth_date.split('-')[1]).extend({required: true, min: 1, max: 12, pattern: { message: "wrong", params: '^[0-9]{1,2}$' }});
+                    value.user.birth_month = ko.observable(this.popupVm.months().find(item => item && item.index == birth_date.split('-')[1])).extend({required: true});
                     value.user.birth_year = ko.observable(birth_date.split('-')[0]).extend({required: true, min: 1863, pattern: { message: "wrong", params: '^[0-9]{4}$' }});              
+                } else {
+                    value.user.birth_day = ko.observable().extend({required: true, min: 1, max: 31, pattern: { message: "wrong", params: '^[0-9]{1,2}$' }});
+                    value.user.birth_month = ko.observable().extend({required: true});
+                    value.user.birth_year = ko.observable().extend({required: true, min: 1863, pattern: { message: "wrong", params: '^[0-9]{4}$' }}); 
                 }
 
                 this.data(value);
+
+                messager.publish(value.user_points.confirmed, 'user_points');
+
                 sailplay.jsonp.get(config.DOMAIN + config.urls.users.custom_variables.batch_get, {
                     names: JSON.stringify(this.vars),
                     auth_hash: config.auth_hash
@@ -58,7 +65,7 @@ export default function(messager) {
                         ko.utils.arrayForEach(result.vars, item => {
                             if (item.name == 'child_birthdate') {
                                 this.data().user['child_bday'](item.value.split('-')[2]);
-                                this.data().user['child_bmonth'](item.value.split('-')[1]);
+                                this.data().user['child_bmonth'](this.popupVm.months().find(i => i && i.index == item.value.split('-')[1]));
                                 this.data().user['child_byear'](item.value.split('-')[0]);
                             } else if (this.data().user[item.name]) this.data().user[item.name](item.value)
                         })
@@ -112,6 +119,7 @@ export default function(messager) {
         this.popupVm = {
             opened: ko.observable(false),
             months: ko.observableArray([
+                undefined,
                 {index: 1, name: 'Январь'},
                 {index: 2, name: 'Февраль'},
                 {index: 3, name: 'Март'},
@@ -138,7 +146,6 @@ export default function(messager) {
 
                 // custom_vars validation
                 if (field == 'child_bday') this.data().user[field].extend({min: 1, max: 31, pattern: { message: "wrong", params: '^[0-9]{1,2}$' }})
-                if (field == 'child_bmonth') this.data().user[field].extend({min: 1, max: 12, pattern: { message: "wrong", params: '^[0-9]{1,2}$' }})
                 if (field == 'child_byear') this.data().user[field].extend({min: 1863, pattern: { message: "wrong", params: '^[0-9]{4}$' }})
                 if (field == 'city') this.data().user[field].extend({required: true})
                 if (field == 'address') this.data().user[field].extend({required: true})                
@@ -171,7 +178,6 @@ export default function(messager) {
 
                 if (this.popupVm.step() == 2) {
                     if (!this.data().user.child_bday.isValid()) return;
-                    if (!this.data().user.child_bmonth.isValid()) return;
                     if (!this.data().user.child_byear.isValid()) return;                   
                 }
                 
@@ -195,10 +201,10 @@ export default function(messager) {
                 }
 
                 if (user.birth_day && user.birth_month && user.birth_year)
-                    primary['birthDate'] = `${user.birth_year}-${user.birth_month}-${user.birth_day}`
+                    primary['birthDate'] = `${user.birth_year}-${user.birth_month.index}-${user.birth_day}`
 
                 if (user.child_bday && user.child_bmonth && user.child_byear)
-                    secondary['child_birthdate'] = `${user.child_byear}-${user.child_bmonth}-${user.child_bday}`
+                    secondary['child_birthdate'] = `${user.child_byear}-${user.child_bmonth.index}-${user.child_bday}`
 
                 let current_tags = [].concat(user.for_who, user.training, this.popupVm.active_games(), this.registration);
                 let all_tags = [].concat(this.training_tags, this.games_tags, this.for_who_tags);

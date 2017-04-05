@@ -1,6 +1,6 @@
 <script type="text/template" id="koProfile">
     <span class="bns_info_name">
-        <span data-bind="text: data() && data().user.first_name"></span>
+        <span data-bind="text: data() && (data().user.first_name() || 'Неизвестный')"></span>
         <span data-bind="text: data() && data().user.last_name"></span>
     </span>
     <div class="bns_info_bon_bal">
@@ -40,17 +40,19 @@
                 <label>День рождения</label>
                 <input type="text" class="bns_input_block_d" placeholder="День" data-bind="value: getField('birth_day'), 
                     css: { error: getField('birth_day').isValid && !getField('birth_day').isValid() } ">
-                <!--<div class="select-style bns_input_block_m">
+                <div class="select-style bns_input_block_m" data-bind="
+                    css: { 
+                        selected: getField('birth_month') && getField('birth_month')() && getField('birth_month')().index > -1,
+                        error: getField('birth_month').isValid && !getField('birth_month').isValid()               
+                    }">
                     <select data-bind="
                         options: months,
                         optionsText: function(item) {
-                            return item.name
+                            return item && item.name || ''
                         },
-                        optionsCaption: 'Месяц'
+                        value: getField('birth_month')
                     "></select>
-                </div>-->
-                <input type="text" class="bns_input_block_m" placeholder="Месяц" data-bind="value: getField('birth_month'), 
-                    css: { error: getField('birth_month').isValid && !getField('birth_month').isValid() } ">
+                </div>
                 <input type="text" class="bns_input_block_y" placeholder="Год" data-bind="value: getField('birth_year'), 
                     css: { error: getField('birth_year').isValid && !getField('birth_year').isValid() } ">
             </div>
@@ -67,6 +69,7 @@
         <div class="bns_reg_step_block bns_reg_step2" data-bind="css: { act: step() == 2 }">
             <div class="bns_input_block">
                 <label>Какими видами спорта вы занимаетесь? </label>
+                <br><br>
                 <!-- ko foreach: games -->
                 <div class="bns_checkbox">
                     <input type="checkbox" data-bind="value: $data, checked: $parent.active_games, attr: { id: `id${$index()}` }">
@@ -94,8 +97,16 @@
                 <label>День рождения ребенка</label>
                 <input type="text" class="bns_input_block_d" placeholder="День" data-bind="value: getField('child_bday'), 
                     css: { error: getField('child_bday').isValid && !getField('child_bday').isValid() } ">
-                <input type="text" class="bns_input_block_m" placeholder="Месяц" data-bind="value: getField('child_bmonth'), 
-                    css: { error: getField('child_bmonth').isValid && !getField('child_bmonth').isValid() } ">
+                <div class="select-style bns_input_block_m" data-bind="
+                    css: { selected: getField('child_bmonth') && getField('child_bmonth')() && getField('child_bmonth')().index > -1 }">
+                    <select data-bind="
+                        options: months,
+                        optionsText: function(item) {
+                            return item && item.name || ''
+                        },
+                        value: getField('child_bmonth')
+                    "></select>
+                </div>                    
                 <input type="text" class="bns_input_block_y" placeholder="Год" data-bind="value: getField('child_byear'), 
                     css: { error: getField('child_byear').isValid && !getField('child_byear').isValid() } ">
             </div>

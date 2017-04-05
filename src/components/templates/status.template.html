@@ -5,8 +5,17 @@
             <div class="bns_info_mount_item_info">
                 <span class="bns_info_mount_item_name" data-bind="text: name"></span>
                 <span class="bns_info_mount_item_text" data-bind="text: descr"></span>
-                <a href="#" class="bns_info_mount_item_linck">Подробнее</a>
+                <a href="#" class="bns_info_mount_item_linck" data-bind="click: $parent.popupVm.openStatus.bind($data, $data, $index)">Подробнее</a>
             </div>
         </div>
+    </div>
+    <div data-bind="component: {
+    name: 'ko-popup', 
+    params: { data: popupVm }
+    }">
+        <div class="bns_over_info_left">
+            <img data-bind="attr: { src: status() && status().thumbs.url_250x250 }" width="173" height="177" alt="">
+        </div>
+        <div class="bns_over_info_right" data-bind="html: messages[index()]"></div>
     </div>
 </script>
